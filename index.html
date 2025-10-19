@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Salah Uddin Kader">
+  <meta name="description" content="A fun and interactive Tic Tac Toe game with AI opponent.">
+  <meta name="keywords" content="Tic Tac Toe, Game, AI, JavaScript">
+  <meta name="theme-color" content="#ffffff">
+  <title>Tic Tac Toe Challenge-V2.0</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script src="/_sdk/element_sdk.js"></script>
+  <!-- <style>
+        
+    </style> -->
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Intro Animation -->
+  <div class="intro-overlay" id="introOverlay">
+   <div class="intro-content">
+    <div class="intro-text">
+     🎮 Game Loading...
+    </div>
+    <div class="intro-subtitle">
+     Get Ready to Play!
+    </div>
+   </div>
+  </div>
+  <div class="container main-content"><!-- Game Title -->
+   <h1 class="game-title" id="gameTitle">🎮 Ultimate Tic Tac Toe</h1>
+   <p class="game-subtitle">Challenge the smartest AI opponent!</p><!-- Game Container -->
+   <div class="game-container"><!-- Game Mode Selection -->
+    <div class="game-mode-selection" id="gameModeSelection">
+     <h3 style="margin-bottom: 15px; color: #333; font-size: 1.2rem;">🎮 Choose Game Mode:</h3>
+     <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;"><button class="mode-btn active" id="humanVsHumanBtn"> <i class="fas fa-users"></i> Human vs Human </button> <button class="mode-btn" id="humanVsAiBtn"> <i class="fas fa-robot"></i> Human vs AI </button>
+     </div>
+     <div class="ai-difficulty" id="aiDifficultySelection" style="display: none;">
+      <h4 style="margin-bottom: 10px; color: #666; font-size: 1rem;">🤖 AI Difficulty:</h4>
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;"><button class="difficulty-btn active" data-difficulty="easy"> <i class="fas fa-smile"></i> Beginner </button> <button class="difficulty-btn" data-difficulty="medium"> <i class="fas fa-brain"></i> Smart </button> <button class="difficulty-btn" data-difficulty="hard"> <i class="fas fa-robot"></i> Unbeatable </button>
+      </div>
+     </div>
+    </div><!-- Score Board -->
+    <div class="score-board">
+     <div class="score-item">
+      <div class="score-label" id="playerXLabel">
+       Player X
+      </div>
+      <div class="score-value score-x" id="scoreX">
+       0
+      </div>
+     </div>
+     <div class="score-item">
+      <div class="score-label">
+       Ties
+      </div>
+      <div class="score-value" id="scoreTies">
+       0
+      </div>
+     </div>
+     <div class="score-item">
+      <div class="score-label" id="playerOLabel">
+       Player O
+      </div>
+      <div class="score-value score-o" id="scoreO">
+       0
+      </div>
+     </div>
+    </div><!-- Game Timer -->
+    <div class="game-timer" id="gameTimer"><i class="fas fa-clock"></i> Time: 00:00
+    </div><!-- Game Status -->
+    <div class="game-status" id="gameStatus">
+     🎮 Choose game mode and click "Start Game"!
+    </div><!-- Game Board -->
+    <div class="game-board" id="gameBoard"><button class="game-cell" data-index="0"></button> <button class="game-cell" data-index="1"></button> <button class="game-cell" data-index="2"></button> <button class="game-cell" data-index="3"></button> <button class="game-cell" data-index="4"></button> <button class="game-cell" data-index="5"></button> <button class="game-cell" data-index="6"></button> <button class="game-cell" data-index="7"></button> <button class="game-cell" data-index="8"></button>
+    </div><!-- Game Controls -->
+    <div class="game-controls"><button class="control-btn" id="startGameBtn"> <i class="fas fa-play"></i> Start Game </button> <button class="control-btn" id="newGameBtn"> <i class="fas fa-redo-alt"></i> New Game </button> <button class="control-btn reset-scores" id="resetScoresBtn"> <i class="fas fa-trash-alt"></i> Reset Scores </button>
+    </div>
+   </div><!-- Developer Button --> <button class="developer-button" id="developerBtn">
+    <div class="developer-title"><i class="fas fa-code"></i> Developer Profile
+    </div>
+    <div class="developer-name" id="developerName">
+     Salah Uddin Kader
+    </div></button>
+  </div><!-- Social Media Modal -->
+  <div class="social-modal" id="socialModal">
+   <div class="social-content"><button class="close-modal" id="closeModal"> <i class="fas fa-times"></i> </button>
+    <div class="modal-title" id="modalDeveloperName">
+     Salah Uddin Kader
+    </div>
+    <div class="modal-subtitle">
+     Connect with me on social media!
+    </div><!-- Social Links -->
+    <div class="social-links"><a href="https://facebook.com/salahuddinngfx" target="_blank" rel="noopener noreferrer" class="social-btn facebook"> <i class="fab fa-facebook-f"></i> <span>Facebook</span> </a> <a href="https://twitter.com/salahuddingfx" target="_blank" rel="noopener noreferrer" class="social-btn twitter"> <i class="fab fa-twitter"></i> <span>Twitter</span> </a> <a href="https://instagram.com/salahuddinngfx" target="_blank" rel="noopener noreferrer" class="social-btn instagram"> <i class="fab fa-instagram"></i> <span>Instagram</span> </a> <a href="https://linkedin.com/in/salahuddingfx" target="_blank" rel="noopener noreferrer" class="social-btn linkedin"> <i class="fab fa-linkedin-in"></i> <span>LinkedIn</span> </a> <a href="https://github.com/salahuddinngfx" target="_blank" rel="noopener noreferrer" class="social-btn github"> <i class="fab fa-github"></i> <span>GitHub</span> </a>
+    </div>
+   </div>
+  </div>
+  <script src="script.js"></script>
+    </body>
+</html>
